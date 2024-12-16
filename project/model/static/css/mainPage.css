@@ -1,0 +1,693 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+/* -- Variables  */
+:root {
+	--sidebar-scale: 1;
+	--art-scale: 1;
+}
+
+/* -- Elements */
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+html {
+	overflow-x: hidden; /* Ẩn tràn ngang */
+	box-sizing: border-box;
+	min-width: 100vw;
+	min-height: 100vh;
+	display: block; /* Trả về mặc định */
+	
+	background: linear-gradient(
+        135deg, /* Góc chéo từ trên trái xuống dưới phải */
+        #3558FF 0%,   /* Xanh dương tại 0% */
+        #9F1DFF 33%,  /* Tím tại 33% */
+        #FF642C 100%  /* Cam tại 100% */
+    );
+    background-repeat: no-repeat; /* Không lặp lại */
+    background-attachment: fixed; /* Nền cố định khi cuộn */
+    background-size: cover; /* Bao phủ toàn bộ trang */
+	}
+	
+@font-face {
+	font-family: poppins;
+	src: url("./fonts/Poppins/Poppins-Regular.ttf");
+}
+@font-face {
+	font-family: poppins;
+	src: url("./fonts/Poppins/Poppins-SemiBold.ttf");
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: poppins;
+	src: url("./fonts/Poppins/Poppins-Italic.ttf");
+	font-style:italic;
+}
+/* h1, h2, h3, h4, h5, h6 {
+	font-weight: unset;
+} */
+
+body {
+	margin: 0;
+	/* font-family: helvetica; */
+
+    box-sizing: border-box;
+	overflow: auto;
+
+
+}
+
+button {
+	cursor: pointer;
+}
+
+
+canvas {
+	display: block;
+
+	background:
+	linear-gradient(
+		rgb(89, 128, 128),
+		rgb(79, 55, 79)
+	),
+	linear-gradient(
+		-45deg,
+		rgb(79, 55, 79),
+		rgb(129, 187, 140)
+	),
+	linear-gradient(
+		45deg,
+		#55553d,
+		rgb(206, 128, 206)
+	);
+}
+
+a, button, input, select {
+	pointer-events: auto;
+}
+::placeholder {
+	color:#aaa
+}
+
+/* -- PAGES */
+
+.page-hidden {
+	display: none;
+	pointer-events: none;
+}
+
+
+
+/* -- HEADER */
+#header {
+    color: white;
+    width: calc(100% - 100px); /* Trừ khoảng cách 10px xung quanh */
+    height: 80px;
+    position: fixed;
+    transform: translateX(-50%); /* Căn giữa theo chiều ngang */
+    left: 50%;
+
+    top: 20px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    /* Nền trong suốt với blur */
+    background-color: rgba(255, 255, 255, 0.2); /* Màu nền đen trong suốt */
+    backdrop-filter: blur(5px); /* Hiệu ứng làm mờ */
+    -webkit-backdrop-filter: blur(5px); /* Hỗ trợ Safari */
+
+    /* Bo tròn góc */
+    border-radius: 20px;
+
+    /* Shadow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+	-webkit-animation: 700ms ease-in-out 0s normal none 1 running fadeInDown;
+	animation: 700ms ease-in-out 0s normal none 1 running fadeInDown;
+	-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.05);
+
+	-webkit-transition: all .3s ease 0s;
+	transition: all .3s ease 0s;
+
+}
+
+
+#header #right_container{
+	display: flex;
+	align-items: center;
+}
+#header ul {
+	margin:0;
+	display: flex;
+	padding:5px;
+	text-align: center;
+}
+#header li {
+	list-style: none;
+	display: inline-flex;
+	padding: 15px 0px;
+}
+#header li a {
+	padding: 0px 5px;
+}
+#header a, #header a:visited, #header a:link {
+	color: white;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+#header a:active, #header a:hover {
+	color: pink;
+	background-color: transparent;
+	text-decoration: none;
+}
+/* __________Hero_________ */
+#container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+/* Hero Section */
+#hero {
+	padding-top: 20px;
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: space-between; /* Phân chia không gian */
+    height: 100vh; /* Chiều cao toàn màn hình */
+    padding: 20px; /* Thêm khoảng cách */
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước */
+    position: relative; /* Vị trí tương đối */
+    overflow: hidden; /* Ẩn phần thừa nếu có */
+}
+
+/* Text Section */
+#hero-text {
+    flex: 1; /* Chiếm phần còn lại của không gian */
+    padding-left: 50px; /* Khoảng cách từ lề trái */
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+    z-index: 1; /* Đảm bảo nội dung không bị che */
+}
+#hero-text #box{
+	background-color: white;
+	display: flex;
+	width: 190px;
+	align-items: center;
+	border-radius:100px;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+#hero-text h4{
+	color: black;
+	font-size:medium;
+	font-weight: 800;
+}
+
+#hero-text h6{
+	color: white;
+	font-size:medium;
+	font-weight: 800;
+	margin-bottom: 20px;
+}
+
+#hero-text h1 {
+    font-size:3.5rem;
+	color: white;
+	
+	font-weight: bolder;
+    margin: 0;
+    line-height: 1.2;
+}
+
+#hero-text p {
+    font-size: 1.2rem;
+    margin: 10px 0 20px;
+    color: black;
+}
+
+.button-container {
+    display: flex;
+	
+    gap: 20px;
+}
+.btn:hover {
+    transform: scale(1.05); /* Hiệu ứng phóng to nhẹ */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+.btn {
+	transition: all 0.3s ease; /* Hiệu ứng mượt mà khi hover */
+	cursor: pointer; /* Hiệu ứng con trỏ */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow */
+	text-transform: uppercase; /* Chữ in hoa */
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold; /* Chữ đậm */
+    letter-spacing: 1.5px; /* Giãn cách chữ */
+    border: none;
+	transition: all 0.5s ease;
+    border-radius: 12px;
+    cursor: pointer;
+    color: white;
+    background: linear-gradient(135deg, #81CE00 0%, #00B5FC 48%, #6944FF 100%);
+    text-decoration: none; /* Bỏ gạch chân */
+}
+
+.btn a {
+    color: inherit; /* Kế thừa màu từ nút */
+    text-decoration: none; /* Bỏ gạch chân */
+}
+
+.btn:hover {
+    background-color: #e75b50;
+}
+
+/* Image Section */
+#hero-image {
+    position: absolute;
+	padding-top: 50px;
+    right: 0; /* Đặt hình sát mép phải */
+    bottom: 0; /* Đảm bảo nó tràn đủ chiều cao */
+    height: 100%; /* Chiều cao đầy màn hình */
+    display: flex;
+    align-items: center;
+}
+
+#hero-image img {
+    height: 100%; /* Đảm bảo hình ảnh chiếm toàn bộ chiều cao */
+    width: auto; /* Tự động điều chỉnh chiều rộng */
+    object-fit: cover; /* Giữ tỉ lệ hình ảnh */
+}
+
+/* ______________________*/
+.pagination-container {
+    margin: 20px;
+    width: calc(100% - 100px); /* Trừ khoảng cách 10px xung quanh */
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.icon-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #ddd; /* Viền ban đầu */
+    border-radius: 50%; /* Làm viền tròn */
+    background-color: transparent;
+    transition: all 0.3s ease; /* Hiệu ứng mượt khi hover */
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    padding: 0;
+}
+
+/* Hình ảnh trong nút */
+.icon-button img {
+    width: 35px;
+    height: 35px;
+    filter: brightness(0) invert(1); /* Màu mặc định của hình ảnh */
+    transition: all 0.3s ease; /* Hiệu ứng mượt khi hover */
+}
+
+/* Hover: đổi màu nền và viền, hình ảnh thành trắng */
+.icon-button:hover {
+    border-color: #ff7f00; /* Viền màu cam khi hover */
+    background-color: #ff7f00; /* Nền màu cam */
+}
+
+.icon-button:hover img {
+    filter: brightness(0) invert(0); /* Chuyển hình ảnh thành màu trắng */
+}
+
+/* Trạng thái disabled */
+.icon-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+.item-list {
+    display: flex;
+	justify-content: space-around;
+	width: 100%;
+}
+
+.card {
+    width: 350px;
+    background-color: white;
+	background-color: rgba(255, 255, 255, 0.4); /* Màu nền đen trong suốt */
+    backdrop-filter: blur(5px); /* Hiệu ứng làm mờ */
+    -webkit-backdrop-filter: blur(5px); /* Hỗ trợ Safari */
+    border-radius: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+#available{
+	width: 100%;
+	height: 100vh;
+	margin-top: 100px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative; /* Vị trí tương đối */
+	justify-content: center;
+}
+#available h2{
+	color: white;
+	font-size: 3rem;
+	text-align: center;
+	text-transform: uppercase	;
+	font-weight: bolder;
+}
+.card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.audio-container {
+    display: flex;
+	width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+	padding: 0px 20px;
+}
+
+.audio-container img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.audio-icon:hover {
+    transform: scale(1.1);
+}
+.card h3 {
+    margin: 10px 0;
+    font-size: 1.6rem;
+    color: white;
+	font-weight: bolder;
+}
+
+.card p {
+	height: 120px;
+	font-size: 0.96rem;
+
+    color: white;
+}
+
+.btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+.pagination-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Image Section */
+#image-section {
+    flex: 2; /* Chiếm 50% không gian bên phải */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#image-section img {
+    height:100%;
+    object-fit: cover;
+}
+
+
+/*------------------------------nav bar-----------------------------------*/
+/* Đặt style chung cho navbar */
+#header ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#header li {
+    margin: 0 20px;
+}
+
+#header a {
+    position: relative;
+    font-size: 18px;
+    text-transform: none;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    background-color: transparent;
+    overflow: hidden;
+    z-index: 1;
+}
+
+
+#header a:hover {
+    color: black;
+}
+
+#upload-container {
+	background-color: rgba(255, 255, 255, 0.5); /* Màu nền đen trong suốt */
+    backdrop-filter: blur(5px); /* Hiệu ứng làm mờ */
+    -webkit-backdrop-filter: blur(5px); /* Hỗ trợ Safari */
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+}
+
+#upload-container:hover {
+	background-color: rgba(255, 255, 255, 0.6); /* Màu nền đen trong suốt */
+	transition: all 0.5s ease;
+
+}
+
+#upload-box p {
+    margin: 0;
+    font-size: 1.3rem;
+    color: white;
+    text-align: center;
+}
+
+#upload-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* Ẩn phần ảnh tràn ra ngoài */
+}
+
+#upload-box img {
+    width: 100%; /* Chiều rộng 100% của khung */
+    height: 100%; /* Chiều cao 100% của khung */
+    object-fit:cover; /* Đảm bảo ảnh fit mà không bị méo */
+    position: absolute;
+}
+
+
+
+.main-content {
+    display: flex;
+	padding: 0px 80px;
+	height: calc(100vh - 100px);
+	overflow:hidden;
+	align-items: center;
+    background: none;
+	gap: 50px;
+	margin-top: 90px;
+}
+
+.left{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;	
+	gap:20px
+
+}
+
+.left button{
+	font-size: 1.2rem;
+	width: 100px;
+	background-color: #81CE00;
+}
+.right-panel {
+	width: 350px;
+	flex: 1;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+
+.main-title {
+    font-size: 2.5rem;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-bottom: 15px;
+	font-weight: bolder;
+}
+
+
+
+
+
+strong {
+	font-weight: 700;
+	font-size: 1.3rem;
+}
+
+
+
+
+
+.description, .animal-info p {
+    color: #ecf0f1;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+	font-weight: 400;
+    text-align: left;
+}
+
+.button-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+/*--------------------------- nút chọn hình ảnh---------------------------  */
+
+.animal-info {
+    border-radius: 8px;
+    width: 100%;
+    color: #ecf0f1;
+    margin-top: 20px;
+}
+
+#noti{
+	font-size: 1.5rem;
+	color: white;
+	font-weight: 500px;
+}
+
+.image-overlay {
+    position: absolute;
+	top:50%;
+	z-index: -1;
+    transform: translateY(-40%); /* Căn giữa theo chiều ngang */
+	 /* Đảm bảo hình ảnh nằm trong vùng của right-panel */
+
+}
+
+.overlay-image{
+	height: calc(80vh);
+}
+
+
+
+#about{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative; /* Vị trí tương đối */
+	justify-content: center;
+}
+
+.card .peopleImage{
+	width: 250px;
+	margin-top: 20px;
+	border-radius: 1000px;
+}
+
+.center{
+	align-items: center;
+	text-align: center;
+}
+#about h2{
+	text-align: center;
+	color: white;
+	font-size: 2rem;
+	font-weight: bolder;
+
+}
+
+
+.user{
+	color: white;
+
+}
+
+.image_panel {
+    position: relative;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+.card .tilte{
+	width: 100%;
+	display: flex;
+
+	justify-content: space-between;
+}
+.card .image_panel .animal-image {
+    width: auto; /* Kích thước ảnh */
+    height: 200px;
+    display: block;
+    margin: 0 auto; /* Căn giữa ảnh */
+    z-index: 1; /* Đặt ảnh ở trên cùng */
+    position: relative; /* Vị trí tương đối */
+}
+
+.circle {
+    width: 120px; /* Kích thước hình tròn */
+    height: 120px;
+	background: linear-gradient(
+        35deg, /* Góc chéo từ trên trái xuống dưới phải */
+        #3558FF 0%,   /* Xanh dương tại 0% */
+        #9F1DFF 33%,  /* Tím tại 33% */
+        #FF642C 100%  /* Cam tại 100% */
+    );    border-radius: 50%; /* Tạo hình tròn */
+    position: absolute;
+    bottom: 0px; /* Đặt hình tròn xuống dưới ảnh */
+    left: 50%;
+    transform: translateX(-50%); /* Căn giữa hình tròn */
+    z-index: 0; /* Đặt hình tròn bên dưới */
+}

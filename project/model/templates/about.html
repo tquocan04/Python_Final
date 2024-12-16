@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<base href="./">
+		<title>Nhận diện động vật</title>
+		<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type="image/x-icon" href="./img/logo.png">
+		<link rel="icon" type="image/x-icon" href="./img/logo-2.png">
+		<link type="text/css" rel="stylesheet" href="../static/css/mainPage.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<!-- navbar -->
+		<nav id="header" >
+			<img style="height: 40px;" src="../static/images/icon.png"/>
+			<ul>				
+				<li><a id="page_home"  href="./">Home</a></li>
+				<li><a id="page_contact"  href="{{ url_for('upload') }}">Model</a></li>
+				<li><a id="page_about" href="{{ url_for('about') }}">About</a></li>
+			</ul>
+		</nav>
+
+
+	
+		<div id="about">
+
+			<h2>Danh sách sinh viên </br> thực hiện đề tài </h2>
+			<div class="pagination-container">
+				
+					<button id="prev" class="icon-button"  disabled><img src="../static/images/nexticon.png"></button>
+					<div id="item-list" class="item-list"></div>
+					<button id="next" class="icon-button" ><img style="rotate:180deg" src="../static/images/nexticon.png"></button>
+				</div>
+			</div>
+
+		</div>
+		<script src="../static/js/script2.js"></script>
+
+	</body>
+</html>

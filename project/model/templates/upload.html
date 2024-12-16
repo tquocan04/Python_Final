@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<base href="./">
+		<title>Nhận diện động vật</title>
+		<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type="image/x-icon" href="./img/logo.png">
+		<link rel="icon" type="image/x-icon" href="./img/logo-2.png">
+		<link type="text/css" rel="stylesheet" href="../static/css/mainPage.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+	</head>
+	<body style="overflow: hidden;">
+		<!-- navbar -->
+		<nav id="header" >
+			<img style="height: 40px;" src="../static/images/icon.png"/>
+			<ul>				
+				<li><a id="page_home"  href="./">Home</a></li>
+				<li><a id="page_contact"  href="{{ url_for('upload') }}">Model</a></li>
+				<li><a id="page_about" href="{{ url_for('about') }}">About</a></li>
+			</ul>
+		
+		</nav>
+  
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <div class="left">
+            <div id="upload-container">
+            <input type="file" id="file-input" accept="image/*" hidden />
+            <div id="upload-box">
+                <p>Click để tải ảnh lên </br> hoặc kéo thả ảnh vào đây</p>
+                <img id="preview" src="" alt="Preview" style="display: none;" />
+            </div>
+        </div>
+            <button id="runCode" class="btn">
+                run
+            </button>
+        </div>
+
+        
+        
+        <!-- Form Kết Quả -->
+        <div class="right-panel">
+            <h2 class="main-title">Kết quả phân loại</h2>
+            <p id="noti" style="display: flex;">Nhập hình và ấn vào nút chạy bên dưới để nhận kết quả</p>
+            <div id="animalInfo" class="animal-info" style="display: none;">
+                <p><strong>Tên: </strong> <span id="animalNameVie"></span> - <span id="animalNameEng"></span></span></p>
+                <div class="sound-info">
+                    <p><strong>Tiếng kêu:</strong></p>
+                    <div id="animalSoundIcon" class="sound-icon" style="display: none;">
+                        <img id="soundIconImage" 
+                             src="../static/images/speaker.png" 
+                             alt="Sound Control"
+                             width="30px">
+                    </div>
+                    <audio class="audio-player">
+                        <source src="" type="audio/mpeg">
+                    </audio>
+                    <div id="animalSoundPlaceholder" style="font-style: italic; color: white; display: none;">
+                        Không có tiếng kêu của động vật này.
+                    </div>
+                </div>
+                <audio id="animalSound" style="display: none;">
+                    <source id="animalSoundSource" src="" type="audio/mpeg">
+                </audio>
+                <p><strong>Mô tả:</strong> <span id="animalDescription"></span></p>
+                <p><strong>Độ tin cậy:</strong> <span id="animalConfidence"></span>%</p>
+                <div class="w3-border" style="border-radius: 100px;">
+                    <div class="w3-white" style="border-radius: 100px;height:24px;width:20%"></div>
+                  </div>
+                  
+            </div>
+
+        </div>
+    </div>
+    <div class="image-overlay">
+        <img src="../static/images/elip.png" alt="Overlay Image" class="overlay-image">
+    </div>
+    
+
+
+    <!-- JavaScript -->
+    <script src="../static/js/script.js"></script>
+
+</body>
+
+</html>
